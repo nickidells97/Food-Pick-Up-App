@@ -6,7 +6,8 @@ $(document).ready(function() {
 
   let orders = `
     <section class = "user-orders">
-      <div class = "order-card-header">
+    <h1> menu placeholder </h1>  
+    <div class = "order-card-header">
         <div class = "order-acceptance">
           <form>
             <button class = "accept">Accept</button>
@@ -38,7 +39,7 @@ $(document).ready(function() {
   };
 
   const loadOrders = function() {
-    $.ajax("/restaurants",{method: "GET"})
+    $.ajax("/restaurants/routes/data",{method: "GET"})
       .then(function(data) {
         // console.log(data);
         renderOrderCards(data);
