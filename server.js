@@ -23,6 +23,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use('/restaurants', express.static('restaurants'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -39,7 +40,7 @@ const restaurantsRoutes = require('./routes/restaurant-api');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/restaurants', restaurantsRoutes);
+app.use('/restaurants/routes', restaurantsRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
