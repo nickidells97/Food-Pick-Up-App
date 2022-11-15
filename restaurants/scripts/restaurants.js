@@ -3,24 +3,24 @@ $(document).ready(function() {
 
  const ordersCardContructor = (obj)=> {
 
+  // Line 10 to make API call to user notifying them if order is ready
+
   let orders = `
-    <section class = "user-orders">
-    <div id="target"> Click Here</div>
+    <section class = "user-orders}">
       <div class = "order-card-header">
         <div class = "order-acceptance">
           <form>   
-          <div class="order-status"> 
-            <input type="submit" name="accept" value="Accept" class="order-status">
-            <input type="submit" name="decline" value="Reject">
+            <input type="submit" name="accepted" value="Accepted">
             <input type="submit" name="completed" value="Completed">
-          </div>
-            </form>
+          </form>
+          <span>Time Elapsed</span> <span class ="duration">${obj.duration} </span>
+        </div>
         <div class = "order-details">
         <h5>Order Details</h5>  
         <p> Customer name: ${obj.user_name}</p>
           <p>Order Date: 11/13/2022</p>
           <p> Order Item: ${obj.name}</p>
-          <p id ="total">Total: ${obj.item_price}</p>
+          <p>Total: ${obj.item_price}</p>
           <h5>Customer Contact Details</h5>
           <p>Email: ${obj.email}</p>
           <p>Phone: ${obj.phone}</p>
@@ -31,6 +31,9 @@ $(document).ready(function() {
   return orders
   };
 
+  
+
+  
   const renderOrderCards = (data)=> {
     data.forEach((x)=> {
       let orders = ordersCardContructor(x);
@@ -44,26 +47,59 @@ $(document).ready(function() {
     .then(function(data) {
       // console.log(data);
       renderOrderCards(data);
-      
+
+      timeElapsed();
+
+
+      // const durationArray = $('span.duration').get();
+      // console.log(durationArray[0].innerHTML);
+
+    
+
       // Attach listener
-      $( "#target" ).on( "click", function() {
-        alert( $( this ).text() );
+      $( ".order-acceptance" ).on( "click", (event)=> {
+        event.preventDefault();
+        
+        // To send sms
+        
       });
       
-
-
-      });
+      
+    });
   };
-
+  
   loadOrders();
+  
+  const timeElapsed = ()=> {
 
+    const durationArray = $('span.duration').get();
 
-  $("#total").click((event)=> {
-    console.log("I was clicked");
+    for(let i=0; i < durationArray.length; i++){
+      console.log( durationArray[i].innerHTML);
+      
+      
+      
+      let duration = durationArray[i].innerHTML;
+      let countdown = 0;
+      
+      let timer = 1000;
+      
+      const interval = setInterval(()=> {
+        console.log(countdown);
+        durationArray[i].innerHTML = countdown;
+        countdown++;
+        
+        if(countdown > duration) { //stops interval
+          clearInterval(interval);
+        }
+      }, timer);
+      
+    }
+    
+    };
+    // console.log($('span').get(1));
 
-    event.preventDefault(); // Prevent default action on button click
-  });
-
-
+    
+  
 
 });
