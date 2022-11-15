@@ -27,8 +27,7 @@ app.use('/restaurants', express.static('restaurants'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
+const menuApiRoutes = require('./routes/menu_items-api');
 const usersRoutes = require('./routes/users');
 
 // Restaurant route - JW
@@ -37,8 +36,7 @@ const restaurantsRoutes = require('./routes/restaurant-api');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
+app.use('/public/routes', menuApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/restaurants/routes', restaurantsRoutes);
 
