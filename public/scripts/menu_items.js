@@ -3,7 +3,6 @@ $(document).ready(() => {
 
   const createMenuItem = (obj) => {
 
-    console.log(obj);
     const menu =  `
     <form method="POST" action="/usercart">
             <div>
@@ -19,20 +18,20 @@ $(document).ready(() => {
   };
 
   const renderMenuItems = (data) => {
-    let menu = createMenuItem(data);
-    
-    $('#menu-container').prepend(menu);
+      for(const item of data){
+        let menu = createMenuItem(item);
+        
+        $('#menu-container').prepend(menu);
+      }
   }
 
   const loadMenuItems = function() {
          $.ajax("public/routes/data",{method: "GET"})
            .then(function(data) {
-             console.log(data);
              renderMenuItems(data);
            });
        };
   
        loadMenuItems();
 })
-//test
 
