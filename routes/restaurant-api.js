@@ -3,7 +3,7 @@ const router  = express.Router(); // Creates subroutes for /restaurants
 const db = require('../db/connection');
 
 
-router.get("/data", (req,res) => {
+router.get("/orders", (req,res) => {
   
   let selectOrders = `
   SELECT order_items.order_id, users.first_name as user_name, users.email as email, users.phone as phone , menu_items.item_name as name, menu_items.item_price

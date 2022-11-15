@@ -38,7 +38,7 @@ $(document).ready(function() {
   };
 
   const loadOrders = function() {
-    $.ajax("/restaurants/routes/data",{method: "GET"})
+    $.ajax("/restaurants/orders",{method: "GET"})
       .then(function(data) {
         // console.log(data);
         renderOrderCards(data);

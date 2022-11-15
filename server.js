@@ -38,7 +38,7 @@ const restaurantsRoutes = require('./routes/restaurant-api');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/public/routes', menuApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/restaurants/routes', restaurantsRoutes);
+app.use('/restaurants', restaurantsRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
