@@ -11,7 +11,7 @@ router.get("/data", (req,res) => {
 
   db.query(menuItems)
     .then(data => {
-      const menu= data.rows[0];
+      const menu= data.rows;
       res.json(menu);
     })
 

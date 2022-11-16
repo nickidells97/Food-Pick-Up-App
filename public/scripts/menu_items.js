@@ -3,7 +3,6 @@ $(document).ready(() => {
 
   const createMenuItem = (obj) => {
 
-    // console.log(obj);
     const menu =  `
     <form method="POST">
             <input type="hidden" name="menu_id" value="${obj.id}"/>
@@ -20,9 +19,12 @@ $(document).ready(() => {
   };
 
   const renderMenuItems = (data) => {
-    let menu = createMenuItem(data);
-    $('#menu-container').prepend(menu);
-  };
+    for(const item of data){
+      let menu = createMenuItem(item);
+
+      $('#menu-container').prepend(menu);
+    }
+}
 
   const createCartItem = (obj, cartItem) => {
     const cartItems = `
@@ -35,13 +37,13 @@ $(document).ready(() => {
     return cartItems;
   };
 
-
   const loadMenuItems = function() {
     $.ajax("data",{method: "GET"})
       .then(function(data) {
         renderMenuItems(data);
         let cartItem = 0;
         let price  = 0;
+
         // add and render items to cart element
         $("form").on('submit', function(event) {
           event.preventDefault();
