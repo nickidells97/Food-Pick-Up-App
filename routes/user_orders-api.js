@@ -5,10 +5,12 @@ const db = require('../db/connection');
 
 router.post("/data", (req,res) => {
 
+  
+
   let userOrders = `
   INSERT INTO
   order_items (menu_item_id, order_id)
-  VALUES (${req}, ${orderID})
+  VALUES (${req}, 1)
   `;
 
   db.query(userOrders, () => {
