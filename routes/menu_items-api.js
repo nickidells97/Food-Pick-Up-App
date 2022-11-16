@@ -1,10 +1,9 @@
 const express = require('express'); // Imports express package
-const router  = express.Router(); // Creates subroutes for /public/routes
+const router  = express.Router(); // Creates subroutes for /
 const db = require('../db/connection');
 
 
 router.get("/data", (req,res) => {
-  console.log("hello");
   let menuItems = `
   SELECT * FROM menu_items;
   `;
