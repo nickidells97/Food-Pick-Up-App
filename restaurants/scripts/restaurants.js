@@ -10,7 +10,6 @@ $(document).ready(function() {
       <div class = "order-card-header">
         <div class = "order-acceptance">
           <form>   
-            <input type="submit" name="accepted" value="Accepted">
             <input type="submit" name="completed" value="Completed">
           </form>
           <span>Time Elapsed</span> <span class ="duration">${obj.duration} </span>
@@ -80,13 +79,13 @@ $(document).ready(function() {
       
       
       let duration = durationArray[i].innerHTML;
-      let countdown = 0;
+      let countdown = 1;
       
-      let timer = 1000;
+      let timer = 60000;
       
       const interval = setInterval(()=> {
         console.log(countdown);
-        durationArray[i].innerHTML = countdown;
+        durationArray[i].innerHTML = duration - countdown;
         countdown++;
         
         if(countdown > duration) { //stops interval
