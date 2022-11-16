@@ -11,9 +11,17 @@
 
   <script src="./scripts/menu_items.js"></script>
 
-  <article id="menu-container">
-    
-  </article>
+  <script src="./scripts/userorders.js"></script>
+
+  <article id="menu-container"></article>
+
+  <section id="cart-container">
+    <form method="POST" action="/orders">
+
+      <button>Order</button>
+    </form>
+    <div id="order-total"> Order Total: 0</div>
+  </section>
 
 <div id = "restaurant-orders"></div>
 </body>
