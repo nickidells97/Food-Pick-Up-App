@@ -26,7 +26,7 @@ $(document).ready(() => {
   }
 
   const loadMenuItems = function() {
-         $.ajax("public/routes/data",{method: "GET"})
+         $.ajax("data",{method: "GET"})
            .then(function(data) {
              renderMenuItems(data);
            });
