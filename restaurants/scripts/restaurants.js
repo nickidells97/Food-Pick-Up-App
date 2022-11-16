@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     
 
-      // Attach listener
+      // Attach listener for 
       $( ".order-acceptance" ).on( "click", (event)=> {
         event.preventDefault();
         
@@ -69,34 +69,29 @@ $(document).ready(function() {
   
   loadOrders();
   
+  // Function to start count down menu-item duration
   const timeElapsed = ()=> {
 
+    // Get all the elemenets with class and place them in an array
     const durationArray = $('span.duration').get();
 
-    for(let i=0; i < durationArray.length; i++){
-      console.log( durationArray[i].innerHTML);
-      
-      
+    for(let i=0; i < durationArray.length; i++) {
       
       let duration = durationArray[i].innerHTML;
       let countdown = 1;
-      
       let timer = 60000;
       
       const interval = setInterval(()=> {
-        console.log(countdown);
         durationArray[i].innerHTML = duration - countdown;
         countdown++;
-        
-        if(countdown > duration) { //stops interval
+
+        // Stops setInterval once the countdown is greater than duration
+        if(countdown > duration) {
           clearInterval(interval);
         }
       }, timer);
-      
-    }
-    
-    };
-    // console.log($('span').get(1));
+    }; 
+  };
 
     
   
