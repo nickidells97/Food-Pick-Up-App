@@ -29,6 +29,7 @@ app.use('/restaurants', express.static('restaurants'));
 // Note: Feel free to replace the example routes below with your own
 const menuApiRoutes = require('./routes/menu_items-api');
 const usersRoutes = require('./routes/users');
+const usersOrdersRoutes = require('./routes/user_orders-api');
 
 // Restaurant route - JW
 const restaurantsRoutes = require('./routes/restaurant-api');
@@ -39,18 +40,13 @@ const restaurantsRoutes = require('./routes/restaurant-api');
 app.use('/', menuApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/restaurants', restaurantsRoutes);
+app.use('/', usersOrdersRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-
-
-//Don't need, refers to ejs file
-// app.get('/', (req, res) => {
-//   res.render('index');
-// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
