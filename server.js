@@ -28,6 +28,7 @@ app.use('/restaurants', express.static('restaurants'));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const menuApiRoutes = require('./routes/menu_items-api');
+const twilioRoutes = require('./routes/twilio-api');
 const usersRoutes = require('./routes/users');
 const usersOrdersRoutes = require('./routes/user_orders-api');
 
@@ -38,6 +39,7 @@ const restaurantsRoutes = require('./routes/restaurant-api');
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/', menuApiRoutes);
+app.use('/twilio', twilioRoutes);
 app.use('/users', usersRoutes);
 app.use('/restaurants', restaurantsRoutes);
 app.use('/', usersOrdersRoutes);
