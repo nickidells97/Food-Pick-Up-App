@@ -46,6 +46,7 @@ $(document).ready(() => {
     $.ajax("/twilio/usercart",{method: "POST", data: {ordertext : text}});
   };
 
+  //global variable to store order text
   let cartText = {};
 
 
