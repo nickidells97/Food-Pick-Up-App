@@ -39,6 +39,8 @@ $(document).ready(() => {
     return cartItems;
   };
 
+  let cartItems = [];
+
   const loadMenuItems = function() {
     $.ajax("data",{method: "GET"})
       .then(function(data) {
@@ -55,12 +57,20 @@ $(document).ready(() => {
           const renderCartItems = (data) => {
 
             const found = data.find(element => element.id == itemID);
-
+            cartItems.push({id: itemID, price: found.item_price});
             let cart = createCartItem(found, cartItem);
             $('#cart-container').prepend(cart);
+
             $(`.deleteButton${cartItem}`).on('click', function(event) {
               event.preventDefault();
               $(`#itemIs${cartItem}`).remove();
+
+              // let result;
+              // cartItems.forEach(element => {
+              // if(element.id === found.id) {
+              //   result = cartItems.filter(data => data.id !== found.id)
+              //   return cartItems = result;
+              // }});
               price -= found.item_price;
               cartItem -= 1;
               $('#order-total').text('Order Total:' + price);
@@ -73,5 +83,23 @@ $(document).ready(() => {
         });
       });
   };
+
+
+   $("#order_items").on('submit', function(event) {
+      event.preventDefault();
+
+      let totalPrice = 0;
+      cartItems.forEach((element) => {
+          totalPrice += element.price
+      })
+
+
+      $.ajax({url:"/data", method: "POST", data: {totalPrice, cartItems}})
+
+      // $.ajax({url:"/data", method: "POST", data: cartItems})
+      // console.log("cart items", cartItems)
+    })
+
+
   loadMenuItems();
 });

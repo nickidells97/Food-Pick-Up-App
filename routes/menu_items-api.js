@@ -5,11 +5,10 @@ const db = require('../db/connection');
 
 router.get("/data", (req,res) => {
 
-  console.log("hello");
   let menuItems = `
   SELECT * FROM menu_items;
   `;
-
+    
   db.query(menuItems)
     .then(data => {
       const menu = data.rows;
