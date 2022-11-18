@@ -4,13 +4,13 @@ body {
   align-items: center;
   min-height: 100vh;
   background: whitesmoke;
-  font-family: 'Sono';
+  font-family: "Sono";
   font-weight: 300;
 }
 
 #nav-bar {
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 10px 20px 0px 20px;
