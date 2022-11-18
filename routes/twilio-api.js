@@ -15,7 +15,6 @@ const client = require('twilio') (accountSid,authToken);
 //route name
 router.post("/usercart" , (req,res) => {
 
-  // //update the restaurant what the order is
   // exports.handler = (context, event, callback) => {
   //   // Create a new messaging response object
   //   const twiml = new Twilio.twiml.MessagingResponse();
@@ -25,7 +24,7 @@ router.post("/usercart" , (req,res) => {
   
   //   // Use any of the Node.js SDK methods, such as `message`, to compose a response
   //   if (incomingMessage.includes('hello')) {
-  //     twiml.message('Hello, there!');
+  //     twiml.message('Your order will be ready for pickup in 15-20 min!');
   //   } else if (incomingMessage.includes('bye')) {
   //     twiml.message('Goodbye!');
   //   } else {
@@ -39,13 +38,15 @@ router.post("/usercart" , (req,res) => {
 if(!req.body.ordertext) {
   return res.redirect("/")
 }
+
+let randomOrderNumber = Math.floor(Math.random()*100000);
   //sends out SMS to restaurant
   client.messages.create({
     //who to send restaurant SMS to?
     to: process.env.MY_PHONE_NUMBER,
-    //TWILIO PHONE NUMBER
+    //TWILIO PHONE NUMBER - should we have user name in text msg?
     from: '+18583305661',
-    body: req.body.ordertext
+    body: `Order #${randomOrderNumber}: ${req.body.ordertext}. How long will it take to prepare this order?`
   })
   .then(() => {
     res.redirect("/");
