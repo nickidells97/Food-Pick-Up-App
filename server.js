@@ -23,7 +23,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
-app.use('/thankyou',express.static('public'));
+app.use('/thankyou',express.static('thankyou'));
 app.use('/restaurants', express.static('restaurants'));
 
 // Separated Routes for each Resource

@@ -1,0 +1,26 @@
+.page-header {
+  height: 120px;
+  width: 100%;
+  background-color: #36311F;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+}
+
+li {
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 1.5em;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: goldenrod;
+}
+
