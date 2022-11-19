@@ -2,21 +2,20 @@ $(document).ready(() => {
 
 
   const createMenuItem = (obj) => {
-
     const menu =  `
 
     <div class ="menu-items">
     <form method="POST" class="menu">
       <input type="hidden" class="item_id" name="menu_id" value="${obj.id}"/>
         <div class="menu-container">
-        <img class ="menu-display" src="https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" width="125" height="125">
+        <img class ="menu-display" src=${obj.item_photo} width="125" height="125">
           <div class="menu-info">
             <h5 class="menu-title"> ${obj.item_name}!</h1>
             <span> ${obj.item_description} </span>
-            <div class="info-footer">      
+            <div class="info-footer">
               <span class="price"> Price: $${obj.item_price} </span>
               <button type="submit">Add to cart</button>
-            </div>     
+            </div>
           </div>
         </div>
       </form>
@@ -71,20 +70,15 @@ $(document).ready(() => {
             $(`.deleteButton${cartItem}`).on('click', function(event) {
               event.preventDefault();
               $(`#itemIs${cartItem}`).remove();
-
-              // let result;
-              // cartItems.forEach(element => {
-              // if(element.id === found.id) {
-              //   result = cartItems.filter(data => data.id !== found.id)
-              //   return cartItems = result;
-              // }});
+              let index = cartItems.indexOf(found.id)
+              cartItems.splice(index, 1);
               price -= found.item_price;
               cartItem -= 1;
               $('#order-total').text('Order Total:' + price);
             });
+
             price += found.item_price;
             $('#order-total').text('Order Total:' + price);
-
           };
           renderCartItems(data);
         });
@@ -94,7 +88,6 @@ $(document).ready(() => {
 
    $("#order_items").on('submit', function(event) {
       event.preventDefault();
-
       let totalPrice = 0;
       cartItems.forEach((element) => {
           totalPrice += element.price
@@ -103,8 +96,7 @@ $(document).ready(() => {
 
       $.ajax({url:"/data", method: "POST", data: {totalPrice, cartItems}})
 
-      // $.ajax({url:"/data", method: "POST", data: cartItems})
-      // console.log("cart items", cartItems)
+      
     })
 
 
