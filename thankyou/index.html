@@ -12,21 +12,19 @@
     <link rel="stylesheet" href="./styles/menu-items.css">
     <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/layout.css">
     <link rel="stylesheet" href="./styles/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sono:wght@300;500&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
   <!--Load app Javascript scripts-->
   <script src="./vendor/jquery-3.0.0.js"></script>
-  <script src="./scripts/menu_items.js"></script>
-  <script src="./scripts/thankyou.js"></script>
 </head>
-
-
+<body>
   <header class="page-header">
     <nav id="nav-bar">
       <ul>
@@ -37,45 +35,23 @@
       <span id="restaurant">Dine&Dash</span>
     </nav>
   </header>
+<main>
+  <H3>Thank you for ordering from Dine&Dash! An estimated time for pick up has been sent to you via SMS.</H3>
 
-  <main>
-    <div id ="menu">
-      <article id="menu-container">
-        <H1 id="menu-title">Lunch Specials</H1>
-        
-      </article>
-      
-    </div>
-    
-    <div id="cart">
-      <div class ="cart-items">
-        <p><strong>Order Items</strong></p>
-        <section id="cart-container">  
-        </section>
-      </div>
+</main>
+</body>
 
-      <div class="cart-footer">
-          <form method="POST" id="order_items" >
-            <button class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Order</button>
-          </form>
-          <div id="order-total"><Strong>Order Total:</Strong> $ 0</div>
-      </div>
-    </div>
-
-  </main>
+<footer>
+  <h5 id="contact-details"> Contact Us</h5>
+  <span>Phone: (777) 888-0000</span>
+  <span>Email: Dine&Dash@gmail.com</span>
+  <span>Address: 101 East Coast Best Coast Street, Toronto, Ontario</span>
+  <div class="socials">
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-facebook"></i>
+    <i class="fa-brands fa-instagram"></i>
+  </div>
+</footer>
 
 
-    <footer>
-      <h5 id="contact-details"> Contact Us</h5>
-      <span>Phone: (777) 888-0000</span>
-      <span>Email: Dine&Dash@gmail.com</span>
-      <span>Address: 101 East Coast Best Coast Street, Toronto, Ontario</span>
-      <div class="socials">
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-    </footer>
-
-  </body>
 </html>

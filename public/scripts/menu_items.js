@@ -1,4 +1,7 @@
 $(document).ready(() => {
+  
+  $('#cart').hide()
+  $('#cart').slideDown(900)
 
   //create html for each menu item in our db
   const createMenuItem = (obj) => {
@@ -14,7 +17,7 @@ $(document).ready(() => {
             <span> ${obj.item_description} </span>
             <div class="info-footer">
               <span class="price"> Price: $${obj.item_price} </span>
-              <button type="submit">Add to cart</button>
+              <button class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" type="submit">Add to cart</button>
             </div>
           </div>
         </div>
@@ -41,7 +44,7 @@ $(document).ready(() => {
     <div id="itemIs${cartItem}">
     <article class="totalOrderText">${item.item_name} - $ ${item.item_price}</article>
     <form method="DELETE">
-    <button class="deleteButton${cartItem}">Delete</button>
+    <button class="deleteButton${cartItem} btn btn-secondary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .55rem;">Delete</button>
     </form>
     <br>
     `;
@@ -53,7 +56,7 @@ $(document).ready(() => {
       // sends the total order in cart as text to twilioapi.js to use for the SMS
       const sendOrderText = function(text) {
         $.ajax("/twilio/usercart",{method: "POST", data: {ordertext : text}, success: () => {
-          document.location.href="/";
+          document.location.href="/thankyou";
         }});
       };
   //global variable to store order text
@@ -75,7 +78,6 @@ $(document).ready(() => {
           let itemID = $(this).children('.item_id')[0].value;
           cartItem += 1;
           const renderCartItems = (data) => {
-
             const found = data.find(element => element.id == itemID);
             cartItems.push({id: itemID, price: found.item_price});
             let cart = createCartItem(found, cartItem);
@@ -90,7 +92,7 @@ $(document).ready(() => {
               cartItems.splice(index, 1);
               price -= found.item_price;
               cartItem -= 1;
-              $('#order-total').text('Order Total:' + price);
+              $('#order-total').text('Order Total: $' + price);
               delete cartText[itemID];
             });
 
