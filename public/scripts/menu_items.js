@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-
+  //create html for each menu item in our db
   const createMenuItem = (obj) => {
     const menu =  `
 
@@ -24,6 +24,7 @@ $(document).ready(() => {
     return menu;
   };
 
+  //render the menu items to our html
   const renderMenuItems = (data) => {
     for (const item of data) {
       let menu = createMenuItem(item);
@@ -32,20 +33,32 @@ $(document).ready(() => {
     }
   };
 
+  //create cart item html for each individual item that is selected
   const createCartItem = (item, cartItem) => {
 
     const cartItems = `
     <div type="hidden" value="${cartItem}"/>
-    <div id="itemIs${cartItem}">${item.item_name} - $ ${item.item_price}
+    <div id="itemIs${cartItem}">
+    <article class="totalOrderText">${item.item_name} - $ ${item.item_price}</article>
     <form method="DELETE">
     <button class="deleteButton${cartItem}">Delete</button>
     </form>
-    <div>
+    <br>
     `;
     return cartItems;
   };
 
   let cartItems = [];
+
+      // sends the total order in cart as text to twilioapi.js to use for the SMS
+      const sendOrderText = function(text) {
+        $.ajax("/twilio/usercart",{method: "POST", data: {ordertext : text}, success: () => {
+          document.location.href="/";
+        }});
+      };
+  //global variable to store order text
+  let cartText = {};
+
 
   const loadMenuItems = function() {
     $.ajax("data",{method: "GET"})
@@ -58,6 +71,7 @@ $(document).ready(() => {
         // add and render items to cart element
         $(".menu").on('submit', function(event) {
           event.preventDefault();
+          // find item id
           let itemID = $(this).children('.item_id')[0].value;
           cartItem += 1;
           const renderCartItems = (data) => {
@@ -67,6 +81,8 @@ $(document).ready(() => {
             let cart = createCartItem(found, cartItem);
             $('#cart-container').prepend(cart);
 
+            cartText[itemID] = `${found.item_name.trim()} - $${found.item_price}`;
+            //delete button
             $(`.deleteButton${cartItem}`).on('click', function(event) {
               event.preventDefault();
               $(`#itemIs${cartItem}`).remove();
@@ -75,13 +91,21 @@ $(document).ready(() => {
               price -= found.item_price;
               cartItem -= 1;
               $('#order-total').text('Order Total:' + price);
+              delete cartText[itemID];
             });
 
             price += found.item_price;
-            $('#order-total').text('Order Total:' + price);
+            $('#order-total').text('Order Total: $' + price);
+
           };
           renderCartItems(data);
         });
+
+        //when submitting order, send text to twilio api
+        // $("#order_items").on('submit', () => {
+        //   // sendOrderText(Object.values(cartText).join(","));
+
+        // });
       });
   };
 
@@ -93,12 +117,14 @@ $(document).ready(() => {
           totalPrice += element.price
       })
 
-
-      $.ajax({url:"/data", method: "POST", data: {totalPrice, cartItems}})
-
-      
+      //sends data to db
+      $.ajax({url:"/data", method: "POST", data: {totalPrice, cartItems},success: () => {
+      }})
+      sendOrderText(Object.values(cartText).join(","))
     })
 
 
+
+  //load menu items to home page
   loadMenuItems();
 });

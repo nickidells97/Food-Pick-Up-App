@@ -4,6 +4,26 @@ const db = require('../db/connection');
 
 
 router.post("/data", (req,res) => {
+  // if(!req.body.text) {
+  //   return res.redirect("/")
+  // }
+  
+  // let randomOrderNumber = Math.floor(Math.random()*100000);
+  //   //sends out SMS to restaurant
+  //   client.messages.create({
+  //     //who to send restaurant SMS to?
+  //     to: process.env.MY_PHONE_NUMBER,
+  //     //TWILIO PHONE NUMBER - should we have user name in text msg?
+  //     from: '+18583305661',
+  //     body: `Order #${randomOrderNumber}: ${req.body.text}. How long will it take to prepare this order?`
+  //   })
+  //   .then((data) => {
+  //     console.log(data)
+  //     res.redirect("/");
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
 
   let orders = `
   INSERT INTO
@@ -28,9 +48,9 @@ router.post("/data", (req,res) => {
 
       db.query(userOrders, () => {
         console.log("Menu items inserted");
+        // res.send("Insertion successful")
       });
     })
-
   })
 
 });
