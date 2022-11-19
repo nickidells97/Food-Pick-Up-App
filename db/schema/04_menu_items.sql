@@ -5,5 +5,6 @@ CREATE TABLE menu_items (
   item_name CHAR(50) NOT NULL,
   item_price INT NOT NULL,
   item_description TEXT NOT NULL,
+  item_photo TEXT NOT NULL,
   restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE
 );
