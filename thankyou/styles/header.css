@@ -1,13 +1,14 @@
 .page-header {
-  height: 120px;
+  height: 100px;
   width: 100%;
-  background-color: #36311F;
+  background-color: #1e8e9f;
   color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   position: fixed;
+  z-index: 1;
 }
 
 li {
@@ -16,11 +17,11 @@ li {
   padding-left: 1.5em;
 }
 
-a {
+a, a:hover, a:visited, a:active{
   color: white;
-  text-decoration: none;
-}
-a:hover {
-  color: goldenrod;
+  text-decoration:none;
 }
 
+#restaurant {
+  font-size: 2em;
+}
