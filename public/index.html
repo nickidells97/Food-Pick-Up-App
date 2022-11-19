@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./styles/menu-items.css">
     <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,18 +35,30 @@
     </nav>
   </header>
 
-  <main id="menu">
+  <main>
 
-    <article id="menu-container">
-  <section id="cart-container">
-    <form method="POST" action="/twilio/usercart" id="order_items" >
+    <div id ="menu">
 
-      <button type="submit">Order</button>
-    </form>
-    <div id="order-total"> Order Total: 0</div>
-  </section>
+      <article id="menu-container">
+        
+      </article>
+      
+    </div>
+    
+    <div id="cart">
+      <div class ="cart-items">
+        <p>Order Items</p>
+        <section id="cart-container">  
+        </section>
+      </div>
 
-    </article>
+      <div class="cart-footer">
+          <form method="POST" id="order_items" >
+            <button>Order</button>
+          </form>
+          <div id="order-total"> Order Total: 0</div>
+      </div>
+    </div>
 
   </main>
 

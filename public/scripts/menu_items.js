@@ -44,6 +44,7 @@ $(document).ready(() => {
     <form method="DELETE">
     <button class="deleteButton${cartItem}">Delete</button>
     </form>
+    <br>
     `;
     return cartItems;
   };
