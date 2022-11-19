@@ -1,6 +1,5 @@
 // load .env data into process.env
 require('dotenv').config();
-
 // Web server config
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
@@ -8,6 +7,7 @@ const morgan = require('morgan');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -23,6 +23,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use('/thankyou',express.static('public'));
 app.use('/restaurants', express.static('restaurants'));
 
 // Separated Routes for each Resource

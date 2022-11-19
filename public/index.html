@@ -17,11 +17,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sono:wght@300;500&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
 
-    <!--Load app Javascript scripts-->
-    <script src="./vendor/jquery-3.0.0.js"></script>
-    <script src="./scripts/menu_items.js"></script>
-    <script src="./scripts/user_orders.js"></script>
-  </head>
+  <!--Load app Javascript scripts-->
+  <script src="./vendor/jquery-3.0.0.js"></script>
+  <script src="./scripts/menu_items.js"></script>
+  <script src="./scripts/thankyou.js"></script>
+</head>
 
 
   <header class="page-header">
@@ -37,16 +37,15 @@
   <main id="menu">
 
     <article id="menu-container">
+  <section id="cart-container">
+    <form method="POST" action="/twilio/usercart" id="order_items" >
+
+      <button type="submit">Order</button>
+    </form>
+    <div id="order-total"> Order Total: 0</div>
+  </section>
 
     </article>
-
-    <section id="cart-container">
-      <form method="POST" id="order_items" >
-        <button>Order</button>
-      </form>
-      <div id="order-total"> Order Total: 0</div>
-
-    </section>
 
   </main>
 

@@ -17,7 +17,4 @@ router.get("/data", (req,res) => {
 
 });
 
-
-
-
 module.exports = router; // Allows subroutes to be accessed
