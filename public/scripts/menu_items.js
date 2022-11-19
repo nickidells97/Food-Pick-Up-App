@@ -53,7 +53,7 @@ $(document).ready(() => {
       // sends the total order in cart as text to twilioapi.js to use for the SMS
       const sendOrderText = function(text) {
         $.ajax("/twilio/usercart",{method: "POST", data: {ordertext : text}, success: () => {
-          document.location.href="/";
+          document.location.href="/thankyou";
         }});
       };
   //global variable to store order text

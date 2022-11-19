@@ -1,0 +1,28 @@
+footer {
+  padding-bottom: 1em;
+  margin-top: .2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer h5 {
+  margin: .2em;
+}
+
+footer span {
+  margin: .2em;
+}
+
+.socials {
+  margin-top: .2em;
+}
+
+i {
+  size: 1.1em;
+  padding-left: .5em;
+  padding-right: .5em;
+}
+i:hover {
+color: goldenrod;
+}
