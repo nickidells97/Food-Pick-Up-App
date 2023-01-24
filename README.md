@@ -12,7 +12,7 @@ This is a full stack web application designed to be a portal for users to pre-or
 
 ## Tech Stack
 
-HTML5, CSS3, Javascript, jQuery, Twillio API, SASS, PostgreSQL
+HTML5, CSS3, Javascript, Bootstrap, jQuery, Twillio API, SASS, PostgreSQL
 
 ## Dependencies
 
